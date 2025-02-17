@@ -1,0 +1,83 @@
+1]For App.jsx
+
+useState([]): Manages the list of todos.
+useEffect() (Load & Save todos):
+Loads todos from localStorage when the app starts.
+Saves todos to localStorage whenever they change.
+CRUD Operations:
+addTodo: Adds a new todo.
+updateTodo: Updates a specific todo.
+deleteTodo: Removes a todo.
+toggleComplete: Marks a todo as complete/incomplete.
+Context API (TodoProvider):
+Provides global state for todos and functions.
+Tailwind CSS Styling:
+Background: bg-[#172842]
+Container: max-w-2xl mx-auto shadow-md rounded-lg
+Text: text-white text-2xl font-bold text-center
+✅ How This Works:
+App starts → Loads todos from localStorage.
+User adds/updates/deletes/toggles a todo → Updates the state.
+Todos are stored in localStorage for persistence.
+Todos are displayed using TodoItem components.
+Everything is wrapped inside TodoProvider to allow easy state management.
+
+components
+
+2)TodoForm.jsx
+State Management (useState):
+
+todo stores the current input value.
+setTodo updates the input value when user types.
+Form Submission (onSubmit):
+
+Prevents default page reload.
+Validates that the input is not empty.
+Calls addTodo from context to add the todo.
+Clears input field after submission.
+Context API (useTodo):
+
+Uses useTodo() to access addTodo from TodoContext.
+Tailwind CSS Styling:
+
+Input Field:
+w-full: Takes full width.
+border border-black/10: Adds a light border.
+rounded-l-lg px-3: Rounded corners on the left.
+outline-none duration-150: Smooth focus effect.
+bg-white/20 py-1.5: Semi-transparent background.
+Button:
+rounded-r-lg px-3 py-1: Rounded corners on the right.
+bg-green-600 text-white: Green button with white text.
+✅ How This Works:
+User types in the input field → setTodo updates the state.
+User clicks 'Add' → Form submission (onSubmit) is triggered.
+If input is valid → addTodo() adds the new todo.
+Todo list updates & input field resets.
+
+3)TodoItem
+State Management (useState):
+
+isTodoEditable (boolean) → Controls whether the todo item is editable.
+todoMsg (string) → Stores the current todo text.
+Event Handlers:
+
+editTodo() (Updates todo and exits edit mode).
+toggleCompleted() (Marks todo as completed or incomplete).
+Delete button calls deleteTodo(todo.id) from context.
+UI Features:
+
+Checkbox toggles completion.
+Text Input allows editing.
+Edit/Save Button enables/disables edit mode.
+Delete Button removes todo.
+Tailwind CSS Styling:
+
+bg-[#c6e9a7] → Green for completed todos.
+bg-[#ccbed7] → Purple for incomplete todos.
+line-through → Applies strikethrough to completed tasks.
+✅ How This Works:
+User clicks checkbox → Todo is marked completed/incomplete.
+User clicks edit button → Todo becomes editable.
+User edits and clicks save button → Updates todo.
+User clicks delete button → Todo is removed.
