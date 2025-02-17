@@ -1,22 +1,25 @@
-import {createContext, useContext} from "react"
+// Importing necessary functions from React
+import { createContext, useContext } from "react";
 
+// Creating a context for managing todos globally
 export const TodoContext = createContext({
-    todos: [
+    todos: [  // Default value for the context
         {
-            id: 1,
-            todo: " Todo msg",
-            completed: false,
+            id: 1,  // Unique identifier for the todo
+            todo: "Todo msg",  // Example todo message
+            completed: false,  // Whether the task is completed or not
         }
     ],
-    addTodo: (todo) => {},
-    updateTodo: (id, todo) => {},
-    deleteTodo: (id) => {},
-    toggleComplete: (id) => {}
-})
+    addTodo: (todo) => {},  // Placeholder function to add a todo (to be implemented later)
+    updateTodo: (id, todo) => {},  // Placeholder function to update a todo
+    deleteTodo: (id) => {},  // Placeholder function to delete a todo
+    toggleComplete: (id) => {}  // Placeholder function to toggle a todo's completion status
+});
 
-
+// Custom hook to use the TodoContext easily in any component
 export const useTodo = () => {
-    return useContext(TodoContext)
+    return useContext(TodoContext);  // Provides access to the todo context
 }
 
-export const TodoProvider = TodoContext.Provider
+// Exporting the context provider to wrap around components
+export const TodoProvider = TodoContext.Provider;
